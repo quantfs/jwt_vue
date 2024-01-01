@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\FruitController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
+    Route::post('/', [StoreController::class, 'store']);
+});
+
+Route::group(['namespace' => 'Fruit', 'prefix' => 'fruits'], function () {
+    Route::get('/', [FruitController::class, 'index']);
+});
+
