@@ -27,13 +27,13 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
 
-    Route::group(['namespace' => 'Fruit', 'prefix' => 'fruits'], function () {
-        Route::get('/', [FruitController::class, 'index']);
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::group(['namespace' => 'Fruit', 'prefix' => 'fruits'], function () {
+            Route::get('/', [FruitController::class, 'index']);
+        });
     });
 });
 
 Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
     Route::post('/', [StoreController::class, 'store']);
 });
-
-
