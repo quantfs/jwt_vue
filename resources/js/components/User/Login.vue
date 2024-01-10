@@ -26,7 +26,8 @@ export default {
                 password: this.password,
             })
                 .then(res => {
-                    console.log(res.data.access_token);
+                    //console.log(res.data.access_token);
+                    localStorage.access_token = res.data.access_token;
                 })
         }
     }

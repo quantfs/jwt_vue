@@ -37,3 +37,4 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
     Route::post('/', [StoreController::class, 'store']);
 });
+
