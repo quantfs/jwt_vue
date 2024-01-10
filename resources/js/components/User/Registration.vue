@@ -23,10 +23,6 @@ export default {
         }
     },
 
-    mounted() {
-        console.log(localStorage.access_token);
-    },
-
     methods: {
         store() {
             axios.post('/api/users', {

@@ -28,6 +28,7 @@ export default {
                 .then(res => {
                     //console.log(res.data.access_token);
                     localStorage.access_token = res.data.access_token;
+                    this.$router.push({ name: 'user.personal' });
                 })
         }
     }
