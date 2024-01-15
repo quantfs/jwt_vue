@@ -1,5 +1,5 @@
 import axios from "axios";
-import router from "@/router.js";
+import router from "./router.js";
 
 const api = axios.create();
 
@@ -31,9 +31,10 @@ api.interceptors.response.use(config => {
              .then(res => {
                  localStorage.setItem('access_token', res.data.access_token);
                  error.config.headers.authorization = `Bearer ${res.data.access_token}`;
-                 console.log(res.data.access_token);
+                 //console.log(res.data.access_token);
                  return api.request(error.config);
              })
+
     if (error.response.status === 401) {
         router.push({name: 'user.login'});
     }
